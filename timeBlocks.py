@@ -27,6 +27,10 @@ def main():
 
     start_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)
     start_time = start_time.replace(hour=8, minute=0)
+    # TODO: pobieranie agendy na dzien, do ktorego beda dodawane wydarzenia
+    # TODO: sprawdzanie czy jest dodany identyczny event
+    #       (taka sama nazwa i taki sam czas)
+
     try:
         f = open(sys.argv[1], 'r')
         line = f.readline()
