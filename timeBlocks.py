@@ -3,6 +3,8 @@ import datetime
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+from urllib.error import HTTPError
+import sys
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar'
@@ -19,26 +21,41 @@ def main():
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
 
-    # Call the Calendar AP
-    now = datetime.datetime.utcnow().isoformat()
-    # insert an default test event
-    default_event = {
-        'summary': 'event testowy ',
-        'description': 'testowanie skryptu w python do automatyzacji \
-                        dodawania nowych wydarzeń',
-        'start': {
-            'dateTime': '2018-12-09T09:00:00',
-            'timeZone': 'Europe/Warsaw',
-        },
-        'end': {
-            'dateTime': '2018-12-09T10:00:00',
-            'timeZone': 'Europe/Warsaw',
+    # ustawienia:
+    time_zone = 'Europe/Warsaw'
+    minutes_between = 10
 
-        }
-    }
-
-    service.events().insert(calendarId='primary', body=default_event).execute()
-
+    start_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+    start_time = start_time.replace(hour=8, minute=0)
+    try:
+        f = open(sys.argv[1], 'r')
+        line = f.readline()
+        while line:
+            line = line.split(';')
+            summary = str(line[0])
+            end_time = start_time + datetime.timedelta(minutes=int(line[-1]))
+            event = {
+                'summary': summary,
+                'start': {
+                    'dateTime': start_time.isoformat(),
+                    'timeZone': time_zone,
+                },
+                'end': {
+                    'dateTime': end_time.isoformat(),
+                    'timeZone': time_zone,
+                }
+            }
+            start_time = end_time + datetime.timedelta(minutes=minutes_between)
+            service.events().insert(calendarId='primary', body=event).execute()
+            line = f.readline()
+    except FileNotFoundError as fnf_er:
+        print(fnf_er)
+        print('file not found, check input file')
+    except HTTPError as http_er:
+        print(http_er)
+        print('wrong input data')
+    finally:
+        f.close()
 
 
 if __name__ == '__main__':

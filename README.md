@@ -7,10 +7,10 @@ w wybranym dniu -> informacja podana wraz z danymi wejściowymi.
 ### Wprowadzanie danych:
     1. plik podawany do funkcji main *python timeBlocks.py input_data_as_text*
     2. format zapisu danych: nazwa zadania ;[czas w minutach] np.:
-		+ instalacja oprogramowania ;20m
-		+ medytacja;15m
-		+ drzemka;25m
+		+ instalacja oprogramowania ;20
+		+ medytacja;15
+		+ drzemka;25
 	3. możliwość zdefiniowania przerw czasowych (nie jako wydarzenie, a odstęp pomiędzy eventami):
-		- " --- ; 30m "
+		- " --- ; 30 "
 
     
