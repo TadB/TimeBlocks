@@ -13,4 +13,8 @@ w wybranym dniu -> informacja podana wraz z danymi wejściowymi.
 	3. możliwość zdefiniowania przerw czasowych (nie jako wydarzenie, a odstęp pomiędzy eventami):
 		- " --- ; 30 "
 
-    
+### Futures:
+    1. Skrypt działa w trybie interaktywnym, tzn. po odpaleniu jest możliwość wpisywania zadanie po zadaniu (wraz, z przedziałem czasowym)
+        * akceptacja przez wciśniecie klawisza enter
+        * skrypt na bieżąco dodaje zadania do kalendarza
+    2. możliwość skonfigurowania zmiennych globalnych (czas przerwy pomiędzy zadaniami itp.) - przechowywane w osobnym pliku ustawień.
