@@ -5,6 +5,7 @@ from httplib2 import Http
 from oauth2client import file, client, tools
 from urllib.error import HTTPError
 import sys
+import json
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar'
@@ -21,15 +22,24 @@ def main():
         creds = tools.run_flow(flow, store)
     service = build('calendar', 'v3', http=creds.authorize(Http()))
 
-    # ustawienia:
-    time_zone = 'Europe/Warsaw'
-    minutes_between = 10
+    # read settings file:
+    with open('settings.json') as f:
+        settings = json.load(f)
+    time_zone = settings["time_zone"]
+    minutes_between = int(settings["minutes_between"])
+    h_time = int(settings["start_time"].split(':')[0])
+    m_time = int(settings["start_time"].split(':')[1])
+    calendar_id = settings["calendar_id"]
 
-    start_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)
-    start_time = start_time.replace(hour=8, minute=0)
-    # TODO: pobieranie agendy na dzien, do ktorego beda dodawane wydarzenia
-    # TODO: sprawdzanie czy jest dodany identyczny event
-    #       (taka sama nazwa i taki sam czas)
+    # set insert day
+    if settings["day"] is "today":
+        start_time = datetime.datetime.utcnow()
+        start_time = start_time.replace(hour=h_time, minute=m_time)
+    elif settings["day"] is "tomorrow":
+        start_time = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+        start_time = start_time.replace(hour=h_time, minute=m_time)
+    else:
+        return("Insert day is not properly set, please check settings file.")
 
     try:
         f = open(sys.argv[1], 'r')
@@ -50,7 +60,8 @@ def main():
                 }
             }
             start_time = end_time + datetime.timedelta(minutes=minutes_between)
-            service.events().insert(calendarId='primary', body=event).execute()
+            service.events().insert(
+                calendarId=calendar_id, body=event).execute()
             line = f.readline()
     except FileNotFoundError as fnf_er:
         print(fnf_er)

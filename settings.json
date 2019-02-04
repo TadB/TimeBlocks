@@ -1,0 +1,7 @@
+{
+    "calendar_id": "primary",
+    "time_zone": "Europe/Warsaw",
+    "minutes_between": "10",
+    "start_time": "08:00",
+    "day": "today"
+}
