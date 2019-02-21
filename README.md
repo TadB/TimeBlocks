@@ -18,8 +18,8 @@ w wybranym dniu -> informacja podana wraz z danymi wejściowymi.
     * Możliwość wyboru czy wydarzenia wpisywane będą na dzień obecny, czy jutrzejszy. Klucz "day" może przyjmować wartości: "today" lub "tommorow"
 ### Futures:
 	1. Main future - GUI
+		1. Użytkownik wprowadza dane w trybie wizualnym -> konwersja wprowadzonych danych na format dictionary
+		2. Opcja wprowadzenia zadań na wybrany dzień tygodnia z wyświetlaniem mini kalendarza umożliwiającego wskazanie konkretnego dnia.
+		3. Sprawdzanie poprawności wprowadzonych danych przed przeniesieniem do kalendarza
     2. Możliwość skonfigurowania zmiennych globalnych (czas przerwy pomiędzy zadaniami itp.) - przechowywane w osobnym pliku ustawień.
 		- oddzielna zakładka z wszystkimi zmiennymi defaultowymi do skonfigurowania
-	3. Użytkownik wprowadza dane w trybie wizualnym -> konwersja wprowadzonych danych na format dictionary
-	4. Sprawdzanie poprawności wprowadzonych danych przed przeniesieniem do kalendarza
-	5. Opcja wprowadzenia zadań na wybrany dzień tygodnia z wyświetlaniem mini kalendarza umożliwiającego wskazanie konkretnego dnia.

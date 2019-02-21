@@ -1,23 +1,23 @@
-## Dec 10, 2018 10:26
-- [X] plik z ustawieniami użytkownika:
-	- [X] nazwa kalendarza (jeśli inna niż główny)
-	- [X] wielkość odstępu pomiędzy kolejnymi wydarzeniami (w minutach)
-	- [X] domyślna godzina początkowa (od której dodawane są wydarzenia)
-	- [X] czy dodawane wydarzenia wstawiać w aktualnym dniu czy innym (ile dni do przodu)
-- [ ] walidacja popranowści danych wejściowych
+## dec 10, 2018 10:26
+- [x] plik z ustawieniami użytkownika:
+	- [x] nazwa kalendarza (jeśli inna niż główny)
+	- [x] wielkość odstępu pomiędzy kolejnymi wydarzeniami (w minutach)
+	- [x] domyślna godzina początkowa (od której dodawane są wydarzenia)
+	- [x] czy dodawane wydarzenia wstawiać w aktualnym dniu czy innym (ile dni do przodu)
+- [ ] Walidacja popranowści danych wejściowych
 	- [ ] czy obiekt zawiera konkretne klucze
 	- [ ] sprawdzanie wartości dla kluczy:
 		- [ ] czy da się zamienić date na format daty
 		- [ ] czy data ma odpowiedni format
 		- [ ] czy data nie zawiera liter lub innych niedozwolonych znaków
-- [ ] walidacja ustawień (plik settings.json)
+- [ ] Walidacja ustawień (plik settings.json)
 	- [ ] sprawdzanie czy calendar id jest prawidłowy
 	- [ ] spr. czy timeZone jest poprawnie wprowadzone
 	- [ ] sprawdzenie czy wartości liczbowe są poprawne
 	- [ ] sprawdzenie czy godzina początkowa jest w pasującym formacie
 	- [ ] sprawdzenie czy day jest today lub tomorrow
-- [ ] sprawdzanie czy jest już dodane takie same wydarzenie 
-- [ ] ulepszyć README file (podział na sekcje):
+- [ ] Sprawdzanie czy istnieje już takie samo wydarzenie w kalendarzu
+- [ ] Ulepszyć README file (podział na sekcje):
   - [ ] Ogólny opis
   - [ ] How to install
   - [ ] Dokumentacja:
@@ -25,10 +25,11 @@
     - [ ] Wprowadzanie danych
     - [ ] Known Bugs
 - [ ] upload to testPyPi:
-	- [ ] setup.py
 	- [ ] LICENSE
 	- [ ] generate distribution archive
 	- [ ] upload distribution archive
+- [ ] setup.py -> na potrzeby testPyPi oraz do lokalnej instalacji pakietu
 - [ ] TESTY:
 	- [ ] testowanie głównej funkcji dodawania zadania
 	- [ ] testowanie funkcji sprawdzającej poprawność wprowadzonych danych
+	- [ ] testowanie funkjci sprawdzającej plik z ustawieniami.
