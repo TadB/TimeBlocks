@@ -73,5 +73,9 @@ def main():
         f.close()
 
 
+def check_settings(settings_f):
+    pass
+
+
 if __name__ == '__main__':
     main()
